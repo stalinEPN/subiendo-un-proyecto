@@ -1,0 +1,164 @@
+{% extends './base.html' %}
+
+{% block title %}Dispositivos{% endblock %} 
+
+{% block customCSS %}
+<style>
+    /* Estilos para el círculo */
+    .circle-container {
+    position: relative;
+    width: 300px; /* Ancho del círculo principal */
+    height: 300px; /* Alto del círculo principal */
+    margin: 50px auto;
+    
+}
+
+.circle {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #33333300;
+    border-radius: 50%;
+    position: absolute;
+    
+}
+
+/* Estilos para la imagen de la computadora */
+.computer-img {
+    position: absolute;
+    top: 65%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    width: 250px; /* Ancho de la imagen de la computadora */
+    height: 250px; /* Alto de la imagen de la computadora */
+}
+
+/* Estilos para los usuarios */
+.user {
+    position: absolute;
+    text-align: center;
+}
+
+.user img {
+    width: 80px; /* Ancho de la imagen de usuario */
+    height: 80px; /* Alto de la imagen de usuario */
+    border: 4px solid #00e038;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+}
+
+.contenedor{
+    position: relative;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="fles-fill">
+    <div class="main-content">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="images">
+                        <img src="{{ url_for('static', filename='img/EPN_logo_big.png') }}" alt="Imagen 1">
+                        <img src="{{ url_for('static', filename='img/AEIE_logo.png') }}" alt="Imagen 2">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-4">
+            <div class="content">
+                <h1>Lista de Dispositivos</h1>
+                <br>
+                <button type="button" id="detectar1" class="btn btn-warning">Detectar</button>
+                <br><br>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Alias</th>
+                            <th>Nombre</th>
+                            <th>Mac</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for dispositivo in dispositivos %}
+                        <tr>
+                            <td>{{ dispositivo.id }}</td>
+                            <td>{{ dispositivo.alias }}</td>
+                            <td>{{ dispositivo.nombre }}</td>
+                            <td>{{ dispositivo.mac }}</td>
+                            {% if dispositivo.estado == 'Disponible' %}
+                            <td><i class="fa-solid fa-circle" style="color: #00e038;"></i> {{ dispositivo.estado }}</td>                        
+                            {% else %}
+                            <td><i class="fa-solid fa-circle" style="color: #da0505;"></i> {{ dispositivo.estado }}</td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>            
+        </div>
+        <br><br>
+        <div class=" container mt-4">
+            <h1>Dispositivos Cercanos</h1><br><br><br><br>
+        </div>
+        <br><br><br><br><br><br><br>
+        <div class="container mt-4">
+            <div class=" contenedor">
+                <div class="circle-container">
+                    <div class="circle">
+                        <!-- Coloca a los usuarios alrededor del círculo utilizando JavaScript -->
+                    </div>
+                    <img class="computer-img" src="{{ url_for('static', filename='img/computer-image.png') }}" alt="Imagen de la computadora">
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    
+    // Datos de ejemplo de usuarios (id, nombre y dirección)
+    const disps = {{ dispositivos | tojson | safe }};
+    console.log('dispositivos: ')
+    console.log(disps);
+    // Obtén la referencia al círculo en el HTML
+    const circle = document.querySelector('.circle');
+
+        // Calcula el ángulo entre los usuarios
+        const angle = (2 * Math.PI) / disps.length;
+
+        // Coloca a los usuarios alrededor del círculo
+        disps.forEach((dispo, index) => {
+            if(dispo.estado == 'Disponible'){
+                const user = document.createElement('div');
+                user.classList.add('user');
+
+                // Agrega la imagen de usuario
+                const img = document.createElement('img');
+                img.src = "{{ url_for('static', filename='img/BUHO_EPN_big.png') }}"; // Ruta a la imagen de usuario
+                user.appendChild(img);
+
+                // Agrega el nombre del usuario
+                const nombre = document.createElement('div');
+                nombre.textContent = dispo.alias;
+                user.appendChild(nombre);
+
+                // Calcula la posición en el círculo
+                user.style.left = `${Math.cos(index * angle) * 100 + 50}%`;
+                user.style.top = `${Math.sin(index * angle) * 100 + 50}%`;
+
+                circle.appendChild(user);
+            }
+            
+        });
+</script>
+{% endblock %}

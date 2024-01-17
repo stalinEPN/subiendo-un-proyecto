@@ -1,0 +1,204 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.topbar {
+    background-color: #007bff;
+    color: #fff;
+    display: flex;
+    justify-content: space-between; /* Alineación entre elementos */
+    align-items: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.3);
+}
+
+.user-greeting {
+    margin-left: 10px; /* Añadido margen a la izquierda */
+}
+
+.btn-logout {
+    background-color: #fff;
+    color: #007bff;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 20px;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+}
+
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 40px; /* Acomodar para dejar espacio para la barra superior */
+    left: 0;
+    background-color: #007bff; /* Cambio de color a azul */
+    padding-top: 20px;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff; /* Cambio de color del texto a blanco */
+}
+
+.sidebar a {
+    padding: 15px;
+    text-decoration: none;
+    color: #fff; /* Cambio de color del texto a blanco */
+    display: block;
+}
+
+.sidebar a:hover {
+    background-color: #0056b3; /* Cambio de color al pasar el cursor */
+}
+
+.logo {
+    display: flex; /* Utiliza flexbox */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    padding: 15px; /* Añade un poco de espacio alrededor */
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+    width: 160px; /* Cambia el ancho de la imagen según tus preferencias */
+}
+
+.main-content {
+    margin-top: 40px;
+    margin-left: 250px;
+    padding: 20px;
+    overflow-y: scroll; /* Permite el desplazamiento del contenido */
+    height: calc(100vh - 40px); /* Calcula la altura del contenido desplazable */
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        margin-right: 0; /* Cambia el margen izquierdo en pantallas pequeñas */
+    }
+}
+
+.images img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+    width: 250px;
+}
+
+.content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border-color: slategray;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.3);
+    border-width: 2px; /* Ajusta el grosor del borde */
+}
+
+.content h1, h2 {
+    color: #ab1f1f;
+    font-weight: bold;
+}
+
+.content ul, p {
+    color: #2629d8;
+    font-weight: bold;
+}
+
+footer p{
+    font-size: small;
+    color: #7a7979;
+    padding: 10px;
+    font-family: 'Consolas', monospace;
+    bottom: 0;
+    z-index: 1000;
+    display: flex; /* Utiliza flexbox */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: flex-end; /* Alinea al final verticalmente */
+    min-height: 50px; 
+}
+
+.loading-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading-overlay img {
+    max-width: 100px;
+}
+
+.about-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border-color: slategray;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.3);
+    border-width: 2px; /* Ajusta el grosor del borde */
+}
+
+.about-section h1 {
+    color: #e30f0f;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.about-section p {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.about-section ul {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    list-style: none; /* Quita los marcadores */
+    padding-left: 0; /* Elimina el padding predeterminado */
+}
+
+.about-section li {
+    align-items: center;
+    margin-bottom: 5px;
+    display: flex; /* Utiliza flexbox para centrar verticalmente */
+}
+
+.about-section li::before {
+    content: "•";
+    color: #007bff; /* Cambia el color del bullet */
+    font-size: 25px; /* Tamaño del bullet */
+    margin-right: 5px; /* Espacio entre el bullet y el texto */
+}
+
+.logo {
+    display: flex; /* Utiliza flexbox */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    padding: 15px; /* Añade un poco de espacio alrededor */
+}
+
+.logo img {
+    max-width: 100%;
+    height: auto;
+    width: 200px; /* Cambia el ancho de la imagen según tus preferencias */
+}

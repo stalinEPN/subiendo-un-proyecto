@@ -1,0 +1,62 @@
+{% extends './base.html' %}
+
+
+{% block title %}About{% endblock %} 
+
+{% block customCSS %}{% endblock %}
+
+{% block body %}
+
+<div class="fles-fill">
+    <div class="main-content">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="images">
+                        <img src="{{ url_for('static', filename='img/EPN_logo_big.png') }}" alt="Imagen 1">
+                        <img src="{{ url_for('static', filename='img/AEIE_logo.png') }}" alt="Imagen 2">
+                    </div>                    
+                    <section class="about-section">
+                        <div class="container">
+                            <div class="logo">
+                                <img src="{{ url_for('static', filename='img/BTlogger_logo_1.png') }}" alt="logo">
+                            </div>
+                            <h1>¡Bienvenido a BTlogger!</h1>
+                            <p>BTlogger es el resultado de un apasionante proyecto llevado a cabo como parte del curso de Sistemas
+                                Inalámbricos en la prestigiosa Escuela Politécnica Nacional. Esta aplicación tiene un propósito
+                                claro y valioso:</p>
+                            <p>Detectar dispositivos Bluetooth a nuestro alrededor y mostrar su disponibilidad en tiempo real.</p>
+                            <p>¿Qué hace que BTlogger se destaque?</p>
+                            <div style="align-items: center; display: flex; justify-content: center; ">
+                                <ul>
+                                    <li>Capacidad para guardar dispositivos detectados en una base de datos.</li>
+                                    <li>Filtrado inteligente para mostrar solo dispositivos disponibles o fuera de rango.</li>
+                                    <li>Tecnologías avanzadas como Python, Flask, HTML, CSS y JavaScript.</li>
+                                    <li>Utiliza la potente librería PyBluez para realizar el escaneo Bluetooth.</li>
+                                    <li>Base de datos MySQL hospedada en Always Data para un almacenamiento seguro.</li>
+                                    <li>Integración perfecta con APIs como Bootstrap, FontAwesome, jQuery y Ajax.</li>
+                                </ul>
+                            </div>
+                            
+                            <p>BTlogger es una colaboración del Grupo 5, compuesto por apasionados estudiantes de la carrera de
+                                Electrónica y Tecnologías de la Información en la Escuela Politécnica Nacional:</p>
+                            <div style="align-items: center; display: flex; justify-content: center; ">
+                                <ul>
+                                    <li>Stalin García</li>
+                                    <li>Andrew Lagos</li>
+                                    <li>Jonathan Liquinchana</li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <footer class="text-center mt-5">
+            <p>&copy; 2023 All Rights Reserved. BTlogger is a product of 'S. Inalambricos-Grupo 5'</p>
+        </footer>
+    </div>
+</div>
+
+{% endblock %}
